@@ -1,0 +1,133 @@
+//1. Leap Year Checker
+
+const isleapYear = (year) => {
+    if ((year % 4 === 0) && (year % 100 !== 0) || (year % 400 !== 0)) {
+
+        return "is Leap Year"
+    } else {
+        return 'is not leap Year'
+    }
+}
+
+console.log(isleapYear(1993))
+
+// 2. Ticket Pricing
+
+function getTicketPrice(age) {
+    let price;
+    if (age <= 12) {
+        price = 10
+    }
+    else if ((age >= 13) && (age <= 17)) {
+        price = 15
+    }
+    else {
+        price = 20
+    }
+
+    console.log(price)
+    return price
+}
+
+getTicketPrice(20)
+
+
+
+function clothingAdvisor() {
+    // demander a user la temperateur actuelle
+    let t = parseInt(prompt("Quelle est la temperateur actuelle en degré "))
+
+    // demande is il peut ou non 
+    let isRaining = confirm(" ESt-ce qu'il pleut ? cliquer OK si oui  , Annuler si non")
+
+    let advice
+
+    // conseiller les vetements en fonction de la temperateur et de la pluie 
+
+    if (t < 10) {
+        if (isRaining) {
+            advice = "portez vos parapluie"
+        } else {
+            advice = "il fait tres froid ! Portez un manteau d'hiver "
+        }
+
+    }
+    else if (t > 10 && t < 20) {
+        if (isRaining) {
+            advice = "portez vos parapluie"
+        } else {
+            advice = "Portez legers "
+        }
+    }
+    else {
+        if (isRaining) {
+            advice = "portez vos parapluie"
+        } else {
+            advice = 'il fait chaud , ne sortez pas'
+        }
+    }
+    // afficher
+    alert(advice)
+}
+    console.log(clothingAdvisor())
+
+
+// Fonction récursive pour générer le nième nombre de Fibonacci
+function fibonacci(n) {
+  // Condition de base : les deux premiers nombres de Fibonacci sont 0 et 1
+  if (n === 0) return 0; // Le nombre de Fibonacci pour n=0 est 0
+  if (n === 1) return 1; // Le nombre de Fibonacci pour n=1 est 1
+
+  // Appel récursif : somme des deux précédents nombres de Fibonacci
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Exemple d'utilisation
+console.log(fibonacci(6)); // Affiche 8 (les nombres de Fibonacci pour n=0,1,2,3,4,5,6 sont 0, 1, 1, 2, 3, 5, 8)
+
+
+
+//Fonction de Vérification de Palindrome Récursive
+
+// Fonction pour nettoyer la chaîne de caractères : suppression des espaces, ponctuations et mise en minuscules
+function cleanString(str) {
+  return str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+}
+
+// Fonction récursive pour vérifier si une chaîne est un palindrome
+function isPalindrome(str) {
+  // Nettoyage de la chaîne de caractères
+  str = cleanString(str);
+
+  // Condition de base : une chaîne vide ou d'un seul caractère est un palindrome
+  if (str.length <= 1) return true;
+
+  // Vérification des caractères aux extrémités
+  if (str[0] === str[str.length - 1]) {
+    // Appel récursif : vérification de la sous-chaîne sans les premiers et derniers caractères
+    return isPalindrome(str.substring(1, str.length - 1));
+  } else {
+    // Si les caractères aux extrémités sont différents, ce n'est pas un palindrome
+    return false;
+  }
+}
+
+// Exemple d'utilisation
+console.log(isPalindrome("A man, a plan, a canal, Panama")); // Affiche true (c'est un palindrome)
+console.log(isPalindrome("Hello, World!")); // Affiche false (ce n'est pas un palindrome)
+
+
+//Fonction de Puissance Récursive
+
+// Fonction récursive pour calculer la puissance d'un nombre
+function power(base, exponent) {
+  // Condition de base : tout nombre élevé à la puissance 0 est 1
+  if (exponent === 0) return 1;
+
+  // Appel récursif : multiplication de la base par le résultat de la fonction avec l'exposant décrémenté de 1
+  return base * power(base, exponent - 1);
+}
+
+// Exemple d'utilisation
+console.log(power(2, 3)); // Affiche 8 (2^3 = 2 * 2 * 2 = 8)
+console.log(power(5, 0)); // Affiche 1 (5^0 = 1)
